@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://amian.es/schneiderbackend" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://amian.es/schneiderbackend" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://amian.es/schneiderbackend">
+      <s:element name="CreateWaterMeter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serial" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="brand" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="model" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateWaterMeterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateWaterMeterResult" type="tns:SOAPResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SOAPResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Msg" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateElectricityMeter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serial" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="brand" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="model" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateElectricityMeterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateElectricityMeterResult" type="tns:SOAPResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateGateway">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serial" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="brand" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="model" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ip" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="port" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateGatewayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateGatewayResult" type="tns:SOAPResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllGateways">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllGatewaysResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllGatewaysResult" type="tns:SoapListGateway" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SoapListGateway">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SOAPResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Entities" type="tns:ArrayOfGateway" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfGateway">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Gateway" nillable="true" type="tns:Gateway" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Gateway">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Entity">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Ip" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Port" nillable="true" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Entity">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SerialNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Brand" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Model" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetGatewayBySerial">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serial" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGatewayBySerialResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGatewayBySerialResult" type="tns:SoapListGateway" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteGatewayBySerial">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serial" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteGatewayBySerialResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteGatewayBySerialResult" type="tns:SOAPResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllElectricityMeter">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllElectricityMeterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllElectricityMeterResult" type="tns:SoapListElectricityMeter" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SoapListElectricityMeter">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SOAPResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Entities" type="tns:ArrayOfElectricityMeter" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfElectricityMeter">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ElectricityMeter" nillable="true" type="tns:ElectricityMeter" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ElectricityMeter">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Entity" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetElectricityMeterBySerial">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serial" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetElectricityMeterBySerialResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetElectricityMeterBySerialResult" type="tns:SoapListElectricityMeter" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteElectricityMeterBySerial">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serial" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteElectricityMeterBySerialResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteElectricityMeterBySerialResult" type="tns:SOAPResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllWaterMeter">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllWaterMeterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllWaterMeterResult" type="tns:SoapListWaterMeter" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SoapListWaterMeter">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SOAPResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Entities" type="tns:ArrayOfWaterMeter" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfWaterMeter">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="WaterMeter" nillable="true" type="tns:WaterMeter" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WaterMeter">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Entity" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetWaterMeterBySerial">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serial" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetWaterMeterBySerialResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetWaterMeterBySerialResult" type="tns:SoapListWaterMeter" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteWaterMeterBySerial">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serial" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteWaterMeterBySerialResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteWaterMeterBySerialResult" type="tns:SOAPResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CreateWaterMeterSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateWaterMeter" />
+  </wsdl:message>
+  <wsdl:message name="CreateWaterMeterSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateWaterMeterResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateElectricityMeterSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateElectricityMeter" />
+  </wsdl:message>
+  <wsdl:message name="CreateElectricityMeterSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateElectricityMeterResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateGatewaySoapIn">
+    <wsdl:part name="parameters" element="tns:CreateGateway" />
+  </wsdl:message>
+  <wsdl:message name="CreateGatewaySoapOut">
+    <wsdl:part name="parameters" element="tns:CreateGatewayResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllGatewaysSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllGateways" />
+  </wsdl:message>
+  <wsdl:message name="GetAllGatewaysSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllGatewaysResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGatewayBySerialSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGatewayBySerial" />
+  </wsdl:message>
+  <wsdl:message name="GetGatewayBySerialSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGatewayBySerialResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteGatewayBySerialSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteGatewayBySerial" />
+  </wsdl:message>
+  <wsdl:message name="DeleteGatewayBySerialSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteGatewayBySerialResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllElectricityMeterSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllElectricityMeter" />
+  </wsdl:message>
+  <wsdl:message name="GetAllElectricityMeterSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllElectricityMeterResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetElectricityMeterBySerialSoapIn">
+    <wsdl:part name="parameters" element="tns:GetElectricityMeterBySerial" />
+  </wsdl:message>
+  <wsdl:message name="GetElectricityMeterBySerialSoapOut">
+    <wsdl:part name="parameters" element="tns:GetElectricityMeterBySerialResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteElectricityMeterBySerialSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteElectricityMeterBySerial" />
+  </wsdl:message>
+  <wsdl:message name="DeleteElectricityMeterBySerialSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteElectricityMeterBySerialResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllWaterMeterSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllWaterMeter" />
+  </wsdl:message>
+  <wsdl:message name="GetAllWaterMeterSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllWaterMeterResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWaterMeterBySerialSoapIn">
+    <wsdl:part name="parameters" element="tns:GetWaterMeterBySerial" />
+  </wsdl:message>
+  <wsdl:message name="GetWaterMeterBySerialSoapOut">
+    <wsdl:part name="parameters" element="tns:GetWaterMeterBySerialResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteWaterMeterBySerialSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteWaterMeterBySerial" />
+  </wsdl:message>
+  <wsdl:message name="DeleteWaterMeterBySerialSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteWaterMeterBySerialResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="CreateWaterMeter">
+      <wsdl:input message="tns:CreateWaterMeterSoapIn" />
+      <wsdl:output message="tns:CreateWaterMeterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateElectricityMeter">
+      <wsdl:input message="tns:CreateElectricityMeterSoapIn" />
+      <wsdl:output message="tns:CreateElectricityMeterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateGateway">
+      <wsdl:input message="tns:CreateGatewaySoapIn" />
+      <wsdl:output message="tns:CreateGatewaySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllGateways">
+      <wsdl:input message="tns:GetAllGatewaysSoapIn" />
+      <wsdl:output message="tns:GetAllGatewaysSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGatewayBySerial">
+      <wsdl:input message="tns:GetGatewayBySerialSoapIn" />
+      <wsdl:output message="tns:GetGatewayBySerialSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGatewayBySerial">
+      <wsdl:input message="tns:DeleteGatewayBySerialSoapIn" />
+      <wsdl:output message="tns:DeleteGatewayBySerialSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllElectricityMeter">
+      <wsdl:input message="tns:GetAllElectricityMeterSoapIn" />
+      <wsdl:output message="tns:GetAllElectricityMeterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetElectricityMeterBySerial">
+      <wsdl:input message="tns:GetElectricityMeterBySerialSoapIn" />
+      <wsdl:output message="tns:GetElectricityMeterBySerialSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteElectricityMeterBySerial">
+      <wsdl:input message="tns:DeleteElectricityMeterBySerialSoapIn" />
+      <wsdl:output message="tns:DeleteElectricityMeterBySerialSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllWaterMeter">
+      <wsdl:input message="tns:GetAllWaterMeterSoapIn" />
+      <wsdl:output message="tns:GetAllWaterMeterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWaterMeterBySerial">
+      <wsdl:input message="tns:GetWaterMeterBySerialSoapIn" />
+      <wsdl:output message="tns:GetWaterMeterBySerialSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteWaterMeterBySerial">
+      <wsdl:input message="tns:DeleteWaterMeterBySerialSoapIn" />
+      <wsdl:output message="tns:DeleteWaterMeterBySerialSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateWaterMeter">
+      <soap:operation soapAction="http://amian.es/schneiderbackend/CreateWaterMeter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateElectricityMeter">
+      <soap:operation soapAction="http://amian.es/schneiderbackend/CreateElectricityMeter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateGateway">
+      <soap:operation soapAction="http://amian.es/schneiderbackend/CreateGateway" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllGateways">
+      <soap:operation soapAction="http://amian.es/schneiderbackend/GetAllGateways" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGatewayBySerial">
+      <soap:operation soapAction="http://amian.es/schneiderbackend/GetGatewayBySerial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGatewayBySerial">
+      <soap:operation soapAction="http://amian.es/schneiderbackend/DeleteGatewayBySerial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllElectricityMeter">
+      <soap:operation soapAction="http://amian.es/schneiderbackend/GetAllElectricityMeter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetElectricityMeterBySerial">
+      <soap:operation soapAction="http://amian.es/schneiderbackend/GetElectricityMeterBySerial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteElectricityMeterBySerial">
+      <soap:operation soapAction="http://amian.es/schneiderbackend/DeleteElectricityMeterBySerial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllWaterMeter">
+      <soap:operation soapAction="http://amian.es/schneiderbackend/GetAllWaterMeter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWaterMeterBySerial">
+      <soap:operation soapAction="http://amian.es/schneiderbackend/GetWaterMeterBySerial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteWaterMeterBySerial">
+      <soap:operation soapAction="http://amian.es/schneiderbackend/DeleteWaterMeterBySerial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateWaterMeter">
+      <soap12:operation soapAction="http://amian.es/schneiderbackend/CreateWaterMeter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateElectricityMeter">
+      <soap12:operation soapAction="http://amian.es/schneiderbackend/CreateElectricityMeter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateGateway">
+      <soap12:operation soapAction="http://amian.es/schneiderbackend/CreateGateway" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllGateways">
+      <soap12:operation soapAction="http://amian.es/schneiderbackend/GetAllGateways" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGatewayBySerial">
+      <soap12:operation soapAction="http://amian.es/schneiderbackend/GetGatewayBySerial" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGatewayBySerial">
+      <soap12:operation soapAction="http://amian.es/schneiderbackend/DeleteGatewayBySerial" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllElectricityMeter">
+      <soap12:operation soapAction="http://amian.es/schneiderbackend/GetAllElectricityMeter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetElectricityMeterBySerial">
+      <soap12:operation soapAction="http://amian.es/schneiderbackend/GetElectricityMeterBySerial" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteElectricityMeterBySerial">
+      <soap12:operation soapAction="http://amian.es/schneiderbackend/DeleteElectricityMeterBySerial" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllWaterMeter">
+      <soap12:operation soapAction="http://amian.es/schneiderbackend/GetAllWaterMeter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWaterMeterBySerial">
+      <soap12:operation soapAction="http://amian.es/schneiderbackend/GetWaterMeterBySerial" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteWaterMeterBySerial">
+      <soap12:operation soapAction="http://amian.es/schneiderbackend/DeleteWaterMeterBySerial" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+      <soap:address location="http://localhost:59430/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+      <soap12:address location="http://localhost:59430/Service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
