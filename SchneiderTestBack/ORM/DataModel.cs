@@ -1,25 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Common;
+﻿using ORM.Model;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ORM
 {
+    /**
+     * Class with database context from EM6
+     * */
     public class DataModel:DbContext
     {
         public DataModel()
         {
         }
-        
-        public DbSet<Test> Tests { get; set; }
+        public DbSet<Gateway> Gateways { get; set; }
+        public DbSet<WaterMeter> WaterMeters { get; set; }
+        public DbSet<ElectricityMeter> ElectricityMeters { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            base.OnModelCreating(modelBuilder);
         }
+
+        
     }
 }
