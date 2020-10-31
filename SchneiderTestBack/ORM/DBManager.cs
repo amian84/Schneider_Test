@@ -59,7 +59,9 @@ namespace ORM
             DataModel db
         )
         {
-            Gateway result = db.Gateways.Where(wm => wm.SerialNumber == serial)
+            
+            Gateway result = db.Gateways
+                        .Where(gw => gw.SerialNumber == serial)
                         .FirstOrDefault();
             if (result == null)
             {
@@ -80,6 +82,113 @@ namespace ORM
             }
         }
 
+        /// <summary>
+        /// Method to delete electricity meter by serial
+        /// </summary>
+        /// <returns>
+        /// SOAPResponse with response for SOAP request
+        /// </returns>
+        /// <param name="serial">String with serial number</param>
+        public SOAPResponse DeleteElectricityMeterBySerial(string serial)
+        {
+            SOAPResponse response = new SOAPResponse();
+            response.Code = 500;
+            response.Msg = "Error, can not found any entity with that serial";
+            try
+            {
+                using (var db = new DataModel())
+                {
+                    ElectricityMeter result = db.ElectricityMeters
+                        .Where(em => em.SerialNumber == serial)
+                        .FirstOrDefault();
+                    if (result != null)
+                    {
+                        db.ElectricityMeters.Remove(result);
+                        db.SaveChanges();
+                        response.Code = 200;
+                        response.Msg = "Ok";
+                    }
+                }
+            }
+            catch (DbEntityValidationException ex)
+            {
+                response.Code = 501;
+                response.Msg = "Validation error, please check if you are set all required fields";
+            }
+            return response;
+        }
+
+        /// <summary>
+        /// Method to delete gateway by serial
+        /// </summary>
+        /// <returns>
+        /// SOAPResponse with response for SOAP request
+        /// </returns>
+        /// <param name="serial">String with serial number</param>
+        public SOAPResponse DeleteGatewayBySerial(string serial)
+        {
+            SOAPResponse response = new SOAPResponse();
+            response.Code = 500;
+            response.Msg = "Error, can not found any entity with that serial";
+            try
+            {
+                using (var db = new DataModel())
+                {
+                    Gateway result = db.Gateways
+                        .Where(gw => gw.SerialNumber == serial)
+                        .FirstOrDefault();
+                    if (result != null)
+                    {                        
+                        db.Gateways.Remove(result);
+                        db.SaveChanges();
+                        response.Code = 200;
+                        response.Msg = "Ok";
+                    }
+                }
+            }
+            catch (DbEntityValidationException ex)
+            {
+                response.Code = 501;
+                response.Msg = "Validation error, please check if you are set all required fields";
+            }
+            return response;
+        }
+
+        /// <summary>
+        /// Method to delete water meter by serial
+        /// </summary>
+        /// <returns>
+        /// SOAPResponse with response for SOAP request
+        /// </returns>
+        /// <param name="serial">String with serial number</param>
+        public SOAPResponse DeleteWaterMeterBySerial(string serial)
+        {
+            SOAPResponse response = new SOAPResponse();
+            response.Code = 500;
+            response.Msg = "Error, can not found any entity with that serial";
+            try
+            {
+                using (var db = new DataModel())
+                {
+                    WaterMeter result = db.WaterMeters
+                        .Where(wm => wm.SerialNumber == serial)
+                        .FirstOrDefault();
+                    if (result != null)
+                    {
+                        db.WaterMeters.Remove(result);
+                        db.SaveChanges();
+                        response.Code = 200;
+                        response.Msg = "Ok";
+                    }
+                }
+            }
+            catch (DbEntityValidationException ex)
+            {
+                response.Code = 501;
+                response.Msg = "Validation error, please check if you are set all required fields";
+            }
+            return response;
+        }
 
         /// <summary>
         /// Method to create a new water meter object and store into SQLite DB

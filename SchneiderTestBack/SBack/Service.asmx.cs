@@ -52,6 +52,11 @@ namespace SBack
         {
             return DBManager.Get().GetAllGWEntities(serial);
         }
+        [WebMethod]
+        public SOAPResponse DeleteGatewayBySerial(string serial)
+        {
+            return DBManager.Get().DeleteGatewayBySerial(serial);
+        }
 
         [WebMethod]
         public SoapListElectricityMeter GetAllElectricityMeter()
@@ -63,6 +68,11 @@ namespace SBack
         public SoapListElectricityMeter GetElectricityMeterBySerial(string serial)
         {
             return DBManager.Get().GetAllElectricityEntities(serial);
+        }
+        [WebMethod]
+        public SOAPResponse DeleteElectricityMeterBySerial(string serial)
+        {
+            return DBManager.Get().DeleteElectricityMeterBySerial(serial);
         }
 
 
@@ -77,6 +87,10 @@ namespace SBack
         {
             return DBManager.Get().GetAllWaterEntities(serial);
         }
-
+        [WebMethod]
+        public SOAPResponse DeleteWaterMeterBySerial(string serial)
+        {
+            return DBManager.Get().DeleteWaterMeterBySerial(serial);
+        }
     }
 }
