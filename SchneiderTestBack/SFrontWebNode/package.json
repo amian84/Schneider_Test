@@ -1,0 +1,46 @@
+{
+  "name": "SFrontWebNode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "rimraf dist/*",
+    "copy-assets": "ts-node tools/copyAssets",
+    "lint": "tslint -c tslint.json -p tsconfig.json --fix",
+    "tsc": "tsc",
+    "build": "npm-run-all clean lint tsc copy-assets",
+    "dev:start": "npm-run-all build start",
+    "dev": "nodemon --watch src -e ts,ejs --exec npm run dev:start",
+    "start": "node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "david.amian.valle@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "express": "*",
+    "typescript": "*",
+    "tslint": "*",
+    "ejs": "*",
+    "shelljs": "*",
+    "fs-extra": "*",
+    "nodemon": "*",
+    "rimraf": "*",
+    "npm-run-all": "*",
+    "dotenv": "*",
+    "ts-node": "*",
+    "soap": "*",
+    "request": "*",
+    "sax": "*",
+    "body-parser": "*"
+  },
+  "devDependencies": {
+    "@types/node": "*",
+    "@types/express": "*",
+    "@types/fs-extra": "*",
+    "@types/shelljs": "*",
+    "@types/dotenv": "*",
+    "@types/request": "*",
+    "@types/sax": "*"
+  }
+}

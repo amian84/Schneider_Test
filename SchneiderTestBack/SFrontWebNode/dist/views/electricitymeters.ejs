@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Schneider Front-End Nodejs+TS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script>
+        function showCreateForm(){
+            document.getElementById('form').style.display = "block";
+            document.getElementById('list-entities').style.display = "none";
+        }
+
+        function hideCreateForm(){
+            document.getElementById('form').style.display = "none";
+            document.getElementById('list-entities').style.display = "block";
+        }
+        function deleteelem(serial){
+            if (confirm("Are you sure delete entity with serial: " + serial + "?")) {
+                document.getElementById('sndelete').value=serial;
+                document.getElementById('deleteform').submit();
+            } 
+        }
+        
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="header">Electricity Meters Management</h1>
+        <a class="btn" href="/">Back</a>
+        <a class="btn" href="javascript:;" onclick="document.getElementById('refresh').submit();">Refresh</a>
+        <a class="btn" href="javascript:;" onclick="showCreateForm();">Create new Water Meter</a>
+        <% if (error) {%>
+            <p style="color:red">Some error occur: <%= error %></p>
+        <% } %> 
+        <div id="list-entities">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Serial Number</th>
+                    <th scope="col">Brand</th>
+                    <th scope="col">Model</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+            <% for(var i=0; i<emeters.length; i++) {%>
+                <tr>
+                    <th scope="row"><%= emeters[i].Id %></th>
+                    <td><%= emeters[i].SerialNumber %></td>
+                    <td><%= emeters[i].Brand %></td>
+                    <td><%= emeters[i].Model %></td>
+                    <td><button type="button" href="javascript:;" onclick="deleteelem('<%= emeters[i].SerialNumber %>');" data-toggle="tooltip" data-placement="top" title="Delete"><i class="material-icons">delete</i></button></td>
+                </tr>
+            <% } %>
+                </tbody>
+            </table>
+        </div>
+        <div id="form" style="display: none">
+            <form action="/createEntity" method="POST">
+                <input type="text" placeholder="Serial Number" name="sn">
+                <input type="text" placeholder="Brand" name="brand">
+                <input type="text" placeholder="Model" name="model">
+                <input type="hidden" name="entity" value="em">
+                <button class="btn" type="submit">Submit</button>
+              </form>
+        </div>
+
+        <form id="refresh" action="/refresh" method="post">
+            <input type="hidden" name="entity" value="em"/>
+        </form>
+        <form id="deleteform" action="/delete" method="post">
+            <input type="hidden" name="entity" value="em"/>
+            <input type="hidden" id="sndelete" name="sn" value=""/>
+        </form>
+    </div>
+</body>
+</html>
