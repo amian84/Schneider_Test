@@ -4,9 +4,9 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace ORM
 {
-    /**
-     * Class with database context from EM6
-     * */
+    /// <summary>
+    /// Class with database context from EM6
+    /// </summary>
     public class DataModel:DbContext
     {
         public DataModel()

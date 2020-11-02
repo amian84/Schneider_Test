@@ -3,6 +3,9 @@ using System;
 
 namespace Message
 {
+    /// <summary>
+    /// Class to create command create entity
+    /// </summary>
     public class CreateEntityCommand: ICommand
     {
         public string EntityType { get; set; }

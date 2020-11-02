@@ -6,8 +6,17 @@ using SFrontForm.SBack;
 
 namespace SFrontForm
 {
+    /// <summary>
+    /// Class to handle create entity events
+    /// </summary>
     public class CreateEntityEventReceiver : IHandleMessages<CreateEntityEvent>
     {
+        /// <summary>
+        /// Check type and code of soap response and show warning and refresh grid view depending of entity type
+        /// </summary>
+        /// <param name="message">Message contract</param>
+        /// <param name="context">IMessageHandlerContext</param>
+        /// <returns></returns>
         public Task Handle(CreateEntityEvent message, IMessageHandlerContext context)
         {
             Type entType = null;

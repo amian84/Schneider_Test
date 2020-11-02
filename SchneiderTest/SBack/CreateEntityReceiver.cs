@@ -11,8 +11,18 @@ using System.Web;
 
 namespace SBack
 {
+    /// <summary>
+    /// Class to handle command createEntity
+    /// </summary>
     public class CreateEntityReceiver : IHandleMessages<CreateEntityCommand>
     {
+        /// <summary>
+        /// Check create entity and call to ORM with correct entity to create it
+        /// and publish response as CreateEntityEvent
+        /// </summary>
+        /// <param name="message">CreateEntityCommand command</param>
+        /// <param name="context">IMessageHandlerContext</param>
+        /// <returns>Publish task</returns>
         public Task Handle(CreateEntityCommand message, IMessageHandlerContext context)
         {
             Type entType = null;

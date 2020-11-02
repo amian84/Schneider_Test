@@ -11,6 +11,7 @@ namespace SFrontForm
     {
         private IEndpointInstance _endpointInstance;
         private ServiceSoap Soap;
+        //Static instance to get from others class
         public static Form1 Instance { get; set; }
         public Form1()
         {
@@ -20,11 +21,19 @@ namespace SFrontForm
             Form1.Instance = this;
         }
 
+        /// <summary>
+        /// Function to return endpoint for NServiceBus
+        /// </summary>
+        /// <returns>IEndpointInstance with endpoint</returns>
         public IEndpointInstance GetEndpoint()
         {
             return _endpointInstance;
         }
 
+        /// <summary>
+        /// Function to show message box warning
+        /// </summary>
+        /// <param name="msg">message</param>
         public void ShowError(string msg)
         {
             MessageBox.Show(
@@ -378,21 +387,41 @@ namespace SFrontForm
             }
         }
 
+        /// <summary>
+        /// Delete Gateway by serial
+        /// </summary>
+        /// <param name="sender">object sender</param>
+        /// <param name="e">event args</param>
         private void btnDeleteGW_Click(object sender, EventArgs e)
         {
             DeleteSerialEntitySelected(dataGVGW, typeof(Gateway));
         }
 
+        /// <summary>
+        /// Delete Electricity Meter by serial
+        /// </summary>
+        /// <param name="sender">object sender</param>
+        /// <param name="e">event args</param>
         private void btnDeleteEM_Click(object sender, EventArgs e)
         {
             DeleteSerialEntitySelected(dataGVEM, typeof(ElectricityMeter));
         }
 
+        /// <summary>
+        /// Delete Water Meter by serial
+        /// </summary>
+        /// <param name="sender">object sender</param>
+        /// <param name="e">event args</param>
         private void btnDeleteWM_Click(object sender, EventArgs e)
         {
             DeleteSerialEntitySelected(dataGVEM, typeof(WaterMeter));
         }
 
+        /// <summary>
+        /// Stop endpoint when form closing
+        /// </summary>
+        /// <param name="sender">object sender</param>
+        /// <param name="e">event args</param>
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             _endpointInstance?.Stop().GetAwaiter().GetResult();
