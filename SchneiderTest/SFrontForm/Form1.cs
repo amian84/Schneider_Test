@@ -414,7 +414,7 @@ namespace SFrontForm
         /// <param name="e">event args</param>
         private void btnDeleteWM_Click(object sender, EventArgs e)
         {
-            DeleteSerialEntitySelected(dataGVEM, typeof(WaterMeter));
+            DeleteSerialEntitySelected(dataGVWM, typeof(WaterMeter));
         }
 
         /// <summary>

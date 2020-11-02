@@ -267,3 +267,23 @@ Exception details:
 2020-11-02 13:58:26.660 INFO  Logging to 'C:\Proyectos\Schneider_Test\SchneiderTest\SBack\App_Data\' with level Info
 2020-11-02 13:58:26.748 INFO  Auditing processed messages to 'audit'
 2020-11-02 13:58:26.764 INFO  No valid license could be found. Falling back to trial license with start date '2020-11-01'.
+2020-11-02 14:56:35.764 INFO  Initiating shutdown.
+2020-11-02 14:56:35.783 INFO  Shutdown complete.
+2020-11-02 14:57:54.295 INFO  Logging to 'C:\Proyectos\Schneider_Test\SchneiderTest\SBack\App_Data\' with level Info
+2020-11-02 14:57:54.375 INFO  Auditing processed messages to 'audit'
+2020-11-02 14:57:54.389 INFO  No valid license could be found. Falling back to trial license with start date '2020-11-01'.
+2020-11-02 15:09:58.998 INFO  Initiating shutdown.
+2020-11-02 15:09:59.020 INFO  Shutdown complete.
+2020-11-02 15:09:59.946 INFO  Logging to 'C:\Proyectos\Schneider_Test\SchneiderTest\SBack\App_Data\' with level Info
+2020-11-02 15:10:00.025 INFO  Auditing processed messages to 'audit'
+2020-11-02 15:10:00.041 INFO  No valid license could be found. Falling back to trial license with start date '2020-11-01'.
+2020-11-02 15:11:37.023 INFO  Initiating shutdown.
+2020-11-02 15:11:37.038 INFO  Shutdown complete.
+2020-11-02 15:11:52.241 INFO  Logging to 'C:\Proyectos\Schneider_Test\SchneiderTest\SBack\App_Data\' with level Info
+2020-11-02 15:11:52.314 INFO  Auditing processed messages to 'audit'
+2020-11-02 15:11:52.327 INFO  No valid license could be found. Falling back to trial license with start date '2020-11-01'.
+2020-11-02 15:11:54.317 INFO  Initiating shutdown.
+2020-11-02 15:11:54.341 INFO  Shutdown complete.
+2020-11-02 15:11:55.354 INFO  Logging to 'C:\Proyectos\Schneider_Test\SchneiderTest\SBack\App_Data\' with level Info
+2020-11-02 15:11:55.436 INFO  Auditing processed messages to 'audit'
+2020-11-02 15:11:55.452 INFO  No valid license could be found. Falling back to trial license with start date '2020-11-01'.

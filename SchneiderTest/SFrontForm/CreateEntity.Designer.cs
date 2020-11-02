@@ -179,7 +179,6 @@
             this.Name = "CreateEntity";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "CreateEntity";
-            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 

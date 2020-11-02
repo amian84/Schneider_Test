@@ -39,3 +39,39 @@ That class library contains a definitions of Messages that send via NServiceBus:
 
  - CreateEntityCommand.cs: Command to create entites, that message contains string with entity type, serial number, brand, model, ip, and port
  - CreateEntityEvent.cs: Event for response of create entity, that message contains string with entity type, code and message
+
+### SBack
+Its a web application, implement a SOAP webservice to expose the next operations:
+
+  - CreateElectricityMeter: Method to create a Electricity Meter entity, has serial, brand and model arguments
+  - CreateGateway: Method to create a Gateway entity, has serial, brand, model, ip and port arguments
+  - CreateWaterMeter: Method to create a Water Meter entity, has serial, brand and model arguments
+  - DeleteElectricityMeterBySerial: Method to found a Electricity Meter by serial and delete it. Has serial as argument
+  - DeleteGatewayBySerial: Method to found a Gateway by serial and delete it. Has serial as argument
+  - DeleteWaterMeterBySerial: Method to found a Water Meter by serial and delete it. Has serial as argument
+  - GetAllElectricityMeter: Method to list all Electricity Meters
+  - GetAllGateways: Method to list all Gateways
+  - GetAllWaterMeter: Method to list all Water Meters
+  - GetElectricityMeterBySerial: Method to get a Electricity Meter by serial. Has serial as argument
+  - GetGatewayBySerial: Method to get a Gateway by serial. Has serial as argument
+  - GetWaterMeterBySerial: Method to get a Water Meter by serial. Has serial as argument
+
+And as porject structure we've the next elements:
+  
+  - backend.sqlite: Its a sqlite database that copy of bin folder and configure into Web.config for EF6 read from bin folder
+  - Web.config: Web.config with EF6 configurarion
+  - Service.asmx: A ASMX file with all expose methods
+  - CreateEntityReceiver: Class to handle create entity commands from NServiceBus
+
+### SFrontForm
+A windows form project with a front-end implmentation for SBack. We've a SBack connected service and a form with a tab control. We've 3 tabs on that tabcontrol, one for each entity. Inside that tab there're a datagridview control to show the entities and 3 buttons:
+
+  - Refresh List: Refresh the datagridview calling to SOPA service
+  - Create 'Entity': Show a new form to fill for create a new entity (we can use SOAP Post or NServiceBus)
+  - Delete 'Entity': Delete a entity that select into datagridview (That use only SOAP Post method)
+
+[![Create Entity](https://i.ibb.co/87S6ymM/createentity.png)](https://prnt.sc/vbw56r)
+[![List entities](https://i.ibb.co/ySW6Q7w/list-entity.png)](https://prnt.sc/vbw5lg)
+[![Try delete without select](https://i.ibb.co/ryw2sy0/try-delete-without-select.png)](https://prnt.sc/vbw7cz)
+[![Ask delete](https://i.ibb.co/cF6ThZY/ask-delete.png)](https://prnt.sc/vbw7m5)
+

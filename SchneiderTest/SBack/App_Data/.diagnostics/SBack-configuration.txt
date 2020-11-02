@@ -14,7 +14,7 @@
         "FileVersion": "1.0.0"
       },
       {
-        "FullName": "App_global.asax.xamrrhro, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+        "FullName": "App_global.asax.nj7rg738, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
         "FileVersion": "0.0.0"
       }
     ],
@@ -815,7 +815,7 @@
       "MajorRevision": 0,
       "MinorRevision": -23536
     },
-    "WorkingSet": 244776960,
+    "WorkingSet": 186793984,
     "SystemPageSize": 4096,
     "HostName": "DESKTOP-T5EBIT6",
     "UserName": "damian",
