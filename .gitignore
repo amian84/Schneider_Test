@@ -364,3 +364,6 @@ FodyWeavers.xsd
 .learningtransport/
 SchneiderTest/SBack/App_Data/.diagnostics/
 SchneiderTest/SBack/App_Data/*.txt
+dist/*
+**.*/dist
+SchneiderTest/SFrontWebNode/dist
