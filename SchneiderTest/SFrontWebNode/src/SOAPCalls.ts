@@ -29,15 +29,18 @@ export class SOAPCalls {
                 if (!err){
                     await client.GetAllWaterMeter(null, (err1:any, result:any)=>{
                         if (!err1){
-                            for (let i=0 ; i<result.GetAllWaterMeterResult.Entities.WaterMeter.length; i++ ) {
-                                const wm = result.GetAllWaterMeterResult.Entities.WaterMeter[i];
-                                const wmToSave: WaterMeter = new WaterMeter();
-                                wmToSave.SerialNumber = wm.SerialNumber;
-                                wmToSave.Brand = wm.Brand;
-                                wmToSave.Model = wm.Model;
-                                wmToSave.Id = wm.Id;
-                                wmeters.push(wmToSave);
+                            if (result.GetAllWaterMeterResult.Entities){
+                                for (let i=0 ; i<result.GetAllWaterMeterResult.Entities.WaterMeter.length; i++ ) {
+                                    const wm = result.GetAllWaterMeterResult.Entities.WaterMeter[i];
+                                    const wmToSave: WaterMeter = new WaterMeter();
+                                    wmToSave.SerialNumber = wm.SerialNumber;
+                                    wmToSave.Brand = wm.Brand;
+                                    wmToSave.Model = wm.Model;
+                                    wmToSave.Id = wm.Id;
+                                    wmeters.push(wmToSave);
+                                }
                             }
+
                             resolve(wmeters);
                         }
                     });
@@ -55,16 +58,18 @@ export class SOAPCalls {
                 if (!err){
                     await client.GetAllGateways(null, (err1:any, result:any)=>{
                         if (!err1){
-                            for (let i=0 ; i<result.GetAllGatewaysResult.Entities.Gateway.length; i++ ) {
-                                const gw = result.GetAllGatewaysResult.Entities.Gateway[i];
-                                const gwToSave: Gateway = new Gateway();
-                                gwToSave.SerialNumber = gw.SerialNumber;
-                                gwToSave.Brand = gw.Brand;
-                                gwToSave.Model = gw.Model;
-                                gwToSave.Id = gw.Id;
-                                gwToSave.Ip = gw.Ip;
-                                gwToSave.Port = gw.Port;
-                                gws.push(gwToSave);
+                            if (result.GetAllGatewaysResult.Entities){
+                                for (let i=0 ; i<result.GetAllGatewaysResult.Entities.Gateway.length; i++ ) {
+                                    const gw = result.GetAllGatewaysResult.Entities.Gateway[i];
+                                    const gwToSave: Gateway = new Gateway();
+                                    gwToSave.SerialNumber = gw.SerialNumber;
+                                    gwToSave.Brand = gw.Brand;
+                                    gwToSave.Model = gw.Model;
+                                    gwToSave.Id = gw.Id;
+                                    gwToSave.Ip = gw.Ip;
+                                    gwToSave.Port = gw.Port;
+                                    gws.push(gwToSave);
+                                }
                             }
                             resolve(gws);
                         }
@@ -83,14 +88,16 @@ export class SOAPCalls {
                 if (!err){
                     await client.GetAllElectricityMeter(null, (err1:any, result:any)=>{
                         if (!err1){
-                            for (let i=0 ; i<result.GetAllElectricityMeterResult.Entities.ElectricityMeter.length; i++ ) {
-                                const em = result.GetAllElectricityMeterResult.Entities.ElectricityMeter[i];
-                                const emToSave: ElectricityMeter = new ElectricityMeter();
-                                emToSave.SerialNumber = em.SerialNumber;
-                                emToSave.Brand = em.Brand;
-                                emToSave.Model = em.Model;
-                                emToSave.Id = em.Id;
-                                emeters.push(emToSave);
+                            if (result.GetAllElectricityMeterResult.Entities){
+                                for (let i=0 ; i<result.GetAllElectricityMeterResult.Entities.ElectricityMeter.length; i++ ) {
+                                    const em = result.GetAllElectricityMeterResult.Entities.ElectricityMeter[i];
+                                    const emToSave: ElectricityMeter = new ElectricityMeter();
+                                    emToSave.SerialNumber = em.SerialNumber;
+                                    emToSave.Brand = em.Brand;
+                                    emToSave.Model = em.Model;
+                                    emToSave.Id = em.Id;
+                                    emeters.push(emToSave);
+                                }
                             }
                             resolve(emeters);
                         }
