@@ -1,11 +1,6 @@
-﻿using SFrontForm.SBack;
+﻿using Message;
+using SFrontForm.SBack;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -61,7 +56,7 @@ namespace SFrontForm
 
         /// <summary>
         /// Get data from all textbox and call to SOAP back to create
-        /// the entity depends of entity type variable
+        /// the entity depends of entity type variable or send via nbusservice
         /// </summary>
         /// <param name="sender">button control</param>
         /// <param name="e">Arguments for event that fire the click button</param>
@@ -72,36 +67,47 @@ namespace SFrontForm
             string model = txtModel.Text;
             string ip = txtIp.Text;
             string port = txtPort.Text;
-            ResponseSOAP response = new ResponseSOAP();
-            response.Code = 500;
-            response.Message = "Can't create entity for unkonwn entity";
-            if (EntType == typeof(Gateway))
+            if (chNService.Checked)
             {
-                response = CreateGW(serialNumber, brand, model, ip, port);
-            }
-            else if (EntType == typeof(ElectricityMeter))
-            {
-                response = CreateEM(serialNumber, brand, model);
-            }
-            else if (EntType == typeof(WaterMeter))
-            {
-                response = CreateWM(serialNumber, brand, model);
-            }
-            if (response.Code != 200)
-            {
-                MessageBox.Show(
-                    "Error creating entity: " + response.Message,
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
-            }
-            else
-            {
-                ParentFormFront.RefreshGV(EntType);
+                SendByNBus(serialNumber, brand, model, ip, port).GetAwaiter().GetResult();
                 this.Close();
                 this.Dispose();
             }
+            else
+            {
+                ResponseSOAP response = new ResponseSOAP();
+                response.Code = 500;
+                response.Message = "Can't create entity for unkonwn entity";
+                
+                if (EntType == typeof(Gateway))
+                {
+                    response = CreateGW(serialNumber, brand, model, ip, port);
+                }
+                else if (EntType == typeof(ElectricityMeter))
+                {
+                    response = CreateEM(serialNumber, brand, model);
+                }
+                else if (EntType == typeof(WaterMeter))
+                {
+                    response = CreateWM(serialNumber, brand, model);
+                }
+                if (response.Code != 200)
+                {
+                    MessageBox.Show(
+                        "Error creating entity: " + response.Message,
+                        "Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                    );
+                }
+                else
+                {
+                    ParentFormFront.RefreshGV(EntType);
+                    this.Close();
+                    this.Dispose();
+                }
+            }
+            
         }
 
 
@@ -199,6 +205,47 @@ namespace SFrontForm
             {
                 e.Handled = true;
             }
+        }
+
+        public async Task SendByNBus(
+            string serialNumber, 
+            string brand, 
+            string model, 
+            string ip, 
+            string port
+        )
+        {
+            var command = new CreateEntityCommand ();
+            string entType = "";
+            if (typeof(Gateway) == EntType)
+            {
+                entType = "gw";
+            }
+            if (typeof(WaterMeter) == EntType)
+            {
+                entType = "wm";
+            }
+            if (typeof(ElectricityMeter) == EntType)
+            {
+                entType = "em";
+            }
+            command.EntityType = entType;
+            command.SerialNumber = serialNumber;
+            command.Brand = brand;
+            command.Model = model;
+            command.Ip = ip;
+            int? portConverted = null;
+            if (!string.IsNullOrEmpty(port))
+            {
+                int portInt;
+                int.TryParse(port, out portInt);
+                portConverted = portInt;
+            }
+            command.Port = portConverted;
+
+            // Send the command
+            await ParentFormFront.GetEndpoint().Send(command, new NServiceBus.SendOptions())
+                .ConfigureAwait(false);
         }
     }
 }

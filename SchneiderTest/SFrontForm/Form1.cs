@@ -1,16 +1,61 @@
-﻿using SFrontForm.SBack;
+﻿using Message;
+using NServiceBus;
+using SFrontForm.SBack;
 using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SFrontForm
 {
     public partial class Form1 : Form
     {
+        private IEndpointInstance _endpointInstance;
         private ServiceSoap Soap;
+        public static Form1 Instance { get; set; }
         public Form1()
         {
             InitializeComponent();
             Soap = new ServiceSoapClient();
+            InitializeSenderNBusAsync().GetAwaiter().GetResult();
+            Form1.Instance = this;
+        }
+
+        public IEndpointInstance GetEndpoint()
+        {
+            return _endpointInstance;
+        }
+
+        public void ShowError(string msg)
+        {
+            MessageBox.Show(
+                "Some error occur creating entity from other process: " + msg,
+                "Warn",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning
+            );
+        }
+
+
+        /// <summary>
+        /// Initialize Nbus configuration, in that case we configure SFrontForm
+        /// as a endpoint to send commands. Define route of CreateEntityCommand
+        /// to endpoint SBack
+        /// </summary>
+        /// <returns>Task of async awaiter</returns>
+        private async Task InitializeSenderNBusAsync()
+        {
+            var endpointConfiguration = new EndpointConfiguration("SFrontForm");
+
+            var transport = endpointConfiguration.UseTransport<LearningTransport>();
+
+            var routing = transport.Routing();
+            routing.RouteToEndpoint(typeof(CreateEntityCommand), "SBack");
+
+            endpointConfiguration.SendFailedMessagesTo("error");
+            endpointConfiguration.AuditProcessedMessagesTo("audit");
+           
+            _endpointInstance = await Endpoint.Start(endpointConfiguration)
+                .ConfigureAwait(false);
         }
 
         /// <summary>
@@ -26,10 +71,46 @@ namespace SFrontForm
             GetAllGatewaysResponse res = Soap.GetAllGateways(rq);
             if (res.Body.GetAllGatewaysResult.Code == 200)
             {
-                dataGVGW.Rows.Clear();
+                if (dataGVEM.InvokeRequired)
+                {
+                    dataGVGW.Invoke((System.Threading.ThreadStart)delegate
+                    {
+                        dataGVGW.Rows.Clear();
+                    });
+                }
+                else
+                {
+                    dataGVGW.Rows.Clear();
+                }
+                    
                 foreach (Gateway gw in res.Body.GetAllGatewaysResult.Entities)
                 {
-                    dataGVGW.Rows.Add(gw.Id.ToString(), gw.SerialNumber, gw.Brand, gw.Model, gw.Ip, gw.Port.ToString());
+                    if (dataGVEM.InvokeRequired)
+                    {
+                        dataGVGW.Invoke((System.Threading.ThreadStart)delegate
+                        {
+                            dataGVGW.Rows.Add(
+                                gw.Id.ToString(), 
+                                gw.SerialNumber, 
+                                gw.Brand, 
+                                gw.Model, 
+                                gw.Ip, 
+                                gw.Port.ToString()
+                            );
+                        });
+                    }
+                    else
+                    {
+                        dataGVGW.Rows.Add(
+                            gw.Id.ToString(), 
+                            gw.SerialNumber, 
+                            gw.Brand, 
+                            gw.Model, 
+                            gw.Ip, 
+                            gw.Port.ToString()
+                        );
+                    }
+                    
                 }
             }
             
@@ -47,10 +128,31 @@ namespace SFrontForm
             GetAllElectricityMeterResponse res = Soap.GetAllElectricityMeter(rq);
             if (res.Body.GetAllElectricityMeterResult.Code == 200)
             {
-                dataGVEM.Rows.Clear();
+                if (dataGVEM.InvokeRequired)
+                {
+                    dataGVEM.Invoke((System.Threading.ThreadStart)delegate
+                    {
+                        dataGVEM.Rows.Clear();
+                    });
+                }
+                else
+                {
+                    dataGVEM.Rows.Clear();
+                }
                 foreach (ElectricityMeter em in res.Body.GetAllElectricityMeterResult.Entities)
                 {
-                    dataGVEM.Rows.Add(em.Id.ToString(), em.SerialNumber, em.Brand, em.Model);
+                    if (dataGVEM.InvokeRequired)
+                    {
+                        dataGVEM.Invoke((System.Threading.ThreadStart)delegate
+                        {
+                            dataGVEM.Rows.Add(em.Id.ToString(), em.SerialNumber, em.Brand, em.Model);
+                        });
+                    }
+                    else
+                    {
+                        dataGVEM.Rows.Add(em.Id.ToString(), em.SerialNumber, em.Brand, em.Model);
+                    }
+                        
                 }
             }
         }
@@ -66,10 +168,31 @@ namespace SFrontForm
             GetAllWaterMeterResponse res = Soap.GetAllWaterMeter(rq);
             if (res.Body.GetAllWaterMeterResult.Code == 200)
             {
-                dataGVWM.Rows.Clear();
+                if (dataGVWM.InvokeRequired)
+                {
+                    dataGVWM.Invoke((System.Threading.ThreadStart)delegate
+                    {
+                        dataGVWM.Rows.Clear();
+                    });
+                }
+                else
+                {
+                    dataGVWM.Rows.Clear();
+                }
+                
                 foreach (WaterMeter wm in res.Body.GetAllWaterMeterResult.Entities)
                 {
-                    dataGVWM.Rows.Add(wm.Id.ToString(), wm.SerialNumber, wm.Brand, wm.Model);
+                    if (dataGVWM.InvokeRequired)
+                    {
+                        dataGVWM.Invoke((System.Threading.ThreadStart)delegate
+                        {
+                            dataGVWM.Rows.Add(wm.Id.ToString(), wm.SerialNumber, wm.Brand, wm.Model);
+                        });
+                    }
+                    else
+                    {
+                        dataGVWM.Rows.Add(wm.Id.ToString(), wm.SerialNumber, wm.Brand, wm.Model);
+                    }
                 }
             }
         }
@@ -269,5 +392,12 @@ namespace SFrontForm
         {
             DeleteSerialEntitySelected(dataGVEM, typeof(WaterMeter));
         }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _endpointInstance?.Stop().GetAwaiter().GetResult();
+        }
+
+
     }
 }

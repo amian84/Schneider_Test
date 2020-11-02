@@ -1,0 +1,269 @@
+﻿2020-11-02 13:00:38.879 INFO  Logging to 'C:\Proyectos\Schneider_Test\SchneiderTest\SBack\App_Data\' with level Info
+2020-11-02 13:00:38.972 INFO  Auditing processed messages to 'audit'
+2020-11-02 13:00:38.985 INFO  No valid license could be found. Falling back to trial license with start date '2020-11-01'.
+2020-11-02 13:00:39.171 ERROR Moving message '7742db1d-f9c5-4e5c-b2a6-ac6700c565ae' to the error queue 'error' because processing failed due to an exception:
+NServiceBus.MessageDeserializationException: An error occurred while attempting to extract logical messages from incoming physical message 7742db1d-f9c5-4e5c-b2a6-ac6700c565ae ---> System.MissingMethodException: No se puede crear una clase abstract.
+   en System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
+   en System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   en System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   en System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   en System.Activator.CreateInstance(Type type)
+   en NServiceBus.XmlDeserialization.GetPropertyValue(Type type, XmlNode n)
+   en NServiceBus.XmlDeserialization.GetObjectOfTypeFromNode(Type t, XmlNode node)
+   en NServiceBus.XmlDeserialization.Process(XmlNode node, Object parent, Type nodeType)
+   en NServiceBus.XmlDeserialization.ProcessRootTypes(IEnumerable`1 rootTypes, XmlDocument doc, ICollection`1 result)
+   en NServiceBus.XmlDeserialization.Deserialize(Stream stream, IList`1 messageTypesToDeserialize)
+   en NServiceBus.XmlMessageSerializer.Deserialize(Stream stream, IList`1 messageTypesToDeserialize)
+   en NServiceBus.DeserializeMessageConnector.Extract(IncomingMessage physicalMessage)
+   en NServiceBus.DeserializeMessageConnector.ExtractWithExceptionHandling(IncomingMessage message)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en NServiceBus.DeserializeMessageConnector.ExtractWithExceptionHandling(IncomingMessage message)
+   en NServiceBus.DeserializeMessageConnector.<Invoke>d__1.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en NServiceBus.UnitOfWorkBehavior.<InvokeUnitsOfWork>d__1.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en NServiceBus.MutateIncomingTransportMessageBehavior.<InvokeIncomingTransportMessagesMutators>d__2.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en NServiceBus.InvokeAuditPipelineBehavior.<Invoke>d__1.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en NServiceBus.ProcessingStatisticsBehavior.<Invoke>d__0.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en NServiceBus.TransportReceiveToPhysicalMessageConnector.<Invoke>d__1.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en NServiceBus.MainPipelineExecutor.<Invoke>d__1.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   en NServiceBus.LearningTransportMessagePump.<ProcessFile>d__10.MoveNext()
+Exception details:
+	Message ID: 7742db1d-f9c5-4e5c-b2a6-ac6700c565ae
+	Transport message ID: fc875bc4-ae1b-4ee1-9afe-9a33d50a2687
+2020-11-02 13:01:16.578 ERROR Moving message 'c84755ff-675c-4959-a92b-ac6700c61aad' to the error queue 'error' because processing failed due to an exception:
+NServiceBus.MessageDeserializationException: An error occurred while attempting to extract logical messages from incoming physical message c84755ff-675c-4959-a92b-ac6700c61aad ---> System.MissingMethodException: No se puede crear una clase abstract.
+   en System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
+   en System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   en System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   en System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   en System.Activator.CreateInstance(Type type)
+   en NServiceBus.XmlDeserialization.GetPropertyValue(Type type, XmlNode n)
+   en NServiceBus.XmlDeserialization.GetObjectOfTypeFromNode(Type t, XmlNode node)
+   en NServiceBus.XmlDeserialization.Process(XmlNode node, Object parent, Type nodeType)
+   en NServiceBus.XmlDeserialization.ProcessRootTypes(IEnumerable`1 rootTypes, XmlDocument doc, ICollection`1 result)
+   en NServiceBus.XmlDeserialization.Deserialize(Stream stream, IList`1 messageTypesToDeserialize)
+   en NServiceBus.XmlMessageSerializer.Deserialize(Stream stream, IList`1 messageTypesToDeserialize)
+   en NServiceBus.DeserializeMessageConnector.Extract(IncomingMessage physicalMessage)
+   en NServiceBus.DeserializeMessageConnector.ExtractWithExceptionHandling(IncomingMessage message)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en NServiceBus.DeserializeMessageConnector.ExtractWithExceptionHandling(IncomingMessage message)
+   en NServiceBus.DeserializeMessageConnector.<Invoke>d__1.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en NServiceBus.InvokeAuditPipelineBehavior.<Invoke>d__1.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en NServiceBus.ProcessingStatisticsBehavior.<Invoke>d__0.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en NServiceBus.TransportReceiveToPhysicalMessageConnector.<Invoke>d__1.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en NServiceBus.MainPipelineExecutor.<Invoke>d__1.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   en NServiceBus.LearningTransportMessagePump.<ProcessFile>d__10.MoveNext()
+Exception details:
+	Message ID: c84755ff-675c-4959-a92b-ac6700c61aad
+	Transport message ID: 451c9a90-f48b-401f-8d91-d199213491e8
+2020-11-02 13:01:53.719 ERROR Moving message '340b004f-9bc7-4327-ab60-ac6700c6463a' to the error queue 'error' because processing failed due to an exception:
+NServiceBus.MessageDeserializationException: An error occurred while attempting to extract logical messages from incoming physical message 340b004f-9bc7-4327-ab60-ac6700c6463a ---> System.MissingMethodException: No se puede crear una clase abstract.
+   en System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
+   en System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   en System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   en System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   en System.Activator.CreateInstance(Type type)
+   en NServiceBus.XmlDeserialization.GetPropertyValue(Type type, XmlNode n)
+   en NServiceBus.XmlDeserialization.GetObjectOfTypeFromNode(Type t, XmlNode node)
+   en NServiceBus.XmlDeserialization.Process(XmlNode node, Object parent, Type nodeType)
+   en NServiceBus.XmlDeserialization.ProcessRootTypes(IEnumerable`1 rootTypes, XmlDocument doc, ICollection`1 result)
+   en NServiceBus.XmlDeserialization.Deserialize(Stream stream, IList`1 messageTypesToDeserialize)
+   en NServiceBus.XmlMessageSerializer.Deserialize(Stream stream, IList`1 messageTypesToDeserialize)
+   en NServiceBus.DeserializeMessageConnector.Extract(IncomingMessage physicalMessage)
+   en NServiceBus.DeserializeMessageConnector.ExtractWithExceptionHandling(IncomingMessage message)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en NServiceBus.DeserializeMessageConnector.ExtractWithExceptionHandling(IncomingMessage message)
+   en NServiceBus.DeserializeMessageConnector.<Invoke>d__1.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en NServiceBus.InvokeAuditPipelineBehavior.<Invoke>d__1.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en NServiceBus.ProcessingStatisticsBehavior.<Invoke>d__0.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en NServiceBus.TransportReceiveToPhysicalMessageConnector.<Invoke>d__1.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en NServiceBus.MainPipelineExecutor.<Invoke>d__1.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   en NServiceBus.LearningTransportMessagePump.<ProcessFile>d__10.MoveNext()
+Exception details:
+	Message ID: 340b004f-9bc7-4327-ab60-ac6700c6463a
+	Transport message ID: 209c108e-0654-44c3-9e5c-07d11335f85d
+2020-11-02 13:03:27.679 ERROR Moving message 'a8e6d4d8-e711-4f2f-92c6-ac6700c6b45a' to the error queue 'error' because processing failed due to an exception:
+NServiceBus.MessageDeserializationException: An error occurred while attempting to extract logical messages from incoming physical message a8e6d4d8-e711-4f2f-92c6-ac6700c6b45a ---> System.MissingMethodException: No se puede crear una clase abstract.
+   en System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
+   en System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   en System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   en System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   en System.Activator.CreateInstance(Type type)
+   en NServiceBus.XmlDeserialization.GetPropertyValue(Type type, XmlNode n)
+   en NServiceBus.XmlDeserialization.GetObjectOfTypeFromNode(Type t, XmlNode node)
+   en NServiceBus.XmlDeserialization.Process(XmlNode node, Object parent, Type nodeType)
+   en NServiceBus.XmlDeserialization.ProcessRootTypes(IEnumerable`1 rootTypes, XmlDocument doc, ICollection`1 result)
+   en NServiceBus.XmlDeserialization.Deserialize(Stream stream, IList`1 messageTypesToDeserialize)
+   en NServiceBus.XmlMessageSerializer.Deserialize(Stream stream, IList`1 messageTypesToDeserialize)
+   en NServiceBus.DeserializeMessageConnector.Extract(IncomingMessage physicalMessage)
+   en NServiceBus.DeserializeMessageConnector.ExtractWithExceptionHandling(IncomingMessage message)
+   --- Fin del seguimiento de la pila de la excepción interna ---
+   en NServiceBus.DeserializeMessageConnector.ExtractWithExceptionHandling(IncomingMessage message)
+   en NServiceBus.DeserializeMessageConnector.<Invoke>d__1.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en NServiceBus.InvokeAuditPipelineBehavior.<Invoke>d__1.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en NServiceBus.ProcessingStatisticsBehavior.<Invoke>d__0.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en NServiceBus.TransportReceiveToPhysicalMessageConnector.<Invoke>d__1.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en NServiceBus.MainPipelineExecutor.<Invoke>d__1.MoveNext()
+--- Fin del seguimiento de la pila de la ubicación anterior donde se produjo la excepción ---
+   en System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   en System.Runtime.CompilerServices.TaskAwaiter.ValidateEnd(Task task)
+   en NServiceBus.LearningTransportMessagePump.<ProcessFile>d__10.MoveNext()
+Exception details:
+	Message ID: a8e6d4d8-e711-4f2f-92c6-ac6700c6b45a
+	Transport message ID: 24f59dc9-f4fb-4eb1-954d-f01994647b7b
+2020-11-02 13:07:56.327 INFO  Initiating shutdown.
+2020-11-02 13:07:56.349 INFO  Shutdown complete.
+2020-11-02 13:08:24.121 INFO  Logging to 'C:\Proyectos\Schneider_Test\SchneiderTest\SBack\App_Data\' with level Info
+2020-11-02 13:08:24.201 INFO  Auditing processed messages to 'audit'
+2020-11-02 13:08:24.216 INFO  No valid license could be found. Falling back to trial license with start date '2020-11-01'.
+2020-11-02 13:08:25.970 INFO  Initiating shutdown.
+2020-11-02 13:08:26.114 INFO  Shutdown complete.
+2020-11-02 13:08:45.402 INFO  Logging to 'C:\Proyectos\Schneider_Test\SchneiderTest\SBack\App_Data\' with level Info
+2020-11-02 13:08:45.489 INFO  Auditing processed messages to 'audit'
+2020-11-02 13:08:45.505 INFO  No valid license could be found. Falling back to trial license with start date '2020-11-01'.
+2020-11-02 13:14:31.961 INFO  Initiating shutdown.
+2020-11-02 13:14:31.978 INFO  Shutdown complete.
+2020-11-02 13:15:07.105 INFO  Logging to 'C:\Proyectos\Schneider_Test\SchneiderTest\SBack\App_Data\' with level Info
+2020-11-02 13:15:07.198 INFO  Auditing processed messages to 'audit'
+2020-11-02 13:15:07.212 INFO  No valid license could be found. Falling back to trial license with start date '2020-11-01'.
+2020-11-02 13:15:08.767 INFO  Initiating shutdown.
+2020-11-02 13:15:08.898 INFO  Shutdown complete.
+2020-11-02 13:15:12.288 INFO  Logging to 'C:\Proyectos\Schneider_Test\SchneiderTest\SBack\App_Data\' with level Info
+2020-11-02 13:15:12.377 INFO  Auditing processed messages to 'audit'
+2020-11-02 13:15:12.392 INFO  No valid license could be found. Falling back to trial license with start date '2020-11-01'.
+2020-11-02 13:17:06.774 INFO  Initiating shutdown.
+2020-11-02 13:17:31.616 INFO  Shutdown complete.
+2020-11-02 13:18:19.828 INFO  Logging to 'C:\Proyectos\Schneider_Test\SchneiderTest\SBack\App_Data\' with level Info
+2020-11-02 13:18:19.914 INFO  Auditing processed messages to 'audit'
+2020-11-02 13:18:19.928 INFO  No valid license could be found. Falling back to trial license with start date '2020-11-01'.
+2020-11-02 13:18:21.459 INFO  Initiating shutdown.
+2020-11-02 13:18:21.538 INFO  Shutdown complete.
+2020-11-02 13:18:35.398 INFO  Logging to 'C:\Proyectos\Schneider_Test\SchneiderTest\SBack\App_Data\' with level Info
+2020-11-02 13:18:35.473 INFO  Auditing processed messages to 'audit'
+2020-11-02 13:18:35.486 INFO  No valid license could be found. Falling back to trial license with start date '2020-11-01'.
+2020-11-02 13:18:37.089 INFO  Initiating shutdown.
+2020-11-02 13:18:37.164 INFO  Shutdown complete.
+2020-11-02 13:18:49.140 INFO  Logging to 'C:\Proyectos\Schneider_Test\SchneiderTest\SBack\App_Data\' with level Info
+2020-11-02 13:18:49.219 INFO  Auditing processed messages to 'audit'
+2020-11-02 13:18:49.239 INFO  No valid license could be found. Falling back to trial license with start date '2020-11-01'.
+2020-11-02 13:19:13.249 INFO  Initiating shutdown.
+2020-11-02 13:19:13.383 INFO  Shutdown complete.
+2020-11-02 13:19:21.338 INFO  Logging to 'C:\Proyectos\Schneider_Test\SchneiderTest\SBack\App_Data\' with level Info
+2020-11-02 13:19:21.413 INFO  Auditing processed messages to 'audit'
+2020-11-02 13:19:21.428 INFO  No valid license could be found. Falling back to trial license with start date '2020-11-01'.
+2020-11-02 13:20:39.240 INFO  Initiating shutdown.
+2020-11-02 13:20:39.256 INFO  Shutdown complete.
+2020-11-02 13:20:41.521 INFO  Logging to 'C:\Proyectos\Schneider_Test\SchneiderTest\SBack\App_Data\' with level Info
+2020-11-02 13:20:41.590 INFO  Auditing processed messages to 'audit'
+2020-11-02 13:20:41.604 INFO  No valid license could be found. Falling back to trial license with start date '2020-11-01'.
+2020-11-02 13:26:49.514 INFO  Initiating shutdown.
+2020-11-02 13:26:49.529 INFO  Shutdown complete.
+2020-11-02 13:26:51.491 INFO  Logging to 'C:\Proyectos\Schneider_Test\SchneiderTest\SBack\App_Data\' with level Info
+2020-11-02 13:26:51.569 INFO  Auditing processed messages to 'audit'
+2020-11-02 13:26:51.586 INFO  No valid license could be found. Falling back to trial license with start date '2020-11-01'.
+2020-11-02 13:26:56.536 INFO  Initiating shutdown.
+2020-11-02 13:26:56.661 INFO  Shutdown complete.
+2020-11-02 13:26:57.909 INFO  Logging to 'C:\Proyectos\Schneider_Test\SchneiderTest\SBack\App_Data\' with level Info
+2020-11-02 13:26:57.991 INFO  Auditing processed messages to 'audit'
+2020-11-02 13:26:58.006 INFO  No valid license could be found. Falling back to trial license with start date '2020-11-01'.
+2020-11-02 13:27:06.344 INFO  Initiating shutdown.
+2020-11-02 13:27:06.368 INFO  Shutdown complete.
+2020-11-02 13:27:07.390 INFO  Logging to 'C:\Proyectos\Schneider_Test\SchneiderTest\SBack\App_Data\' with level Info
+2020-11-02 13:27:07.479 INFO  Auditing processed messages to 'audit'
+2020-11-02 13:27:07.495 INFO  No valid license could be found. Falling back to trial license with start date '2020-11-01'.
+2020-11-02 13:32:28.635 INFO  Initiating shutdown.
+2020-11-02 13:32:28.653 INFO  Shutdown complete.
+2020-11-02 13:32:37.996 INFO  Logging to 'C:\Proyectos\Schneider_Test\SchneiderTest\SBack\App_Data\' with level Info
+2020-11-02 13:32:38.074 INFO  Auditing processed messages to 'audit'
+2020-11-02 13:32:38.088 INFO  No valid license could be found. Falling back to trial license with start date '2020-11-01'.
+2020-11-02 13:32:49.231 INFO  Initiating shutdown.
+2020-11-02 13:32:49.246 INFO  Shutdown complete.
+2020-11-02 13:32:49.923 INFO  Logging to 'C:\Proyectos\Schneider_Test\SchneiderTest\SBack\App_Data\' with level Info
+2020-11-02 13:32:49.996 INFO  Auditing processed messages to 'audit'
+2020-11-02 13:32:50.010 INFO  No valid license could be found. Falling back to trial license with start date '2020-11-01'.
+2020-11-02 13:56:33.285 INFO  Initiating shutdown.
+2020-11-02 13:56:33.298 INFO  Shutdown complete.
+2020-11-02 13:56:44.721 INFO  Logging to 'C:\Proyectos\Schneider_Test\SchneiderTest\SBack\App_Data\' with level Info
+2020-11-02 13:56:44.798 INFO  Auditing processed messages to 'audit'
+2020-11-02 13:56:44.812 INFO  No valid license could be found. Falling back to trial license with start date '2020-11-01'.
+2020-11-02 13:56:46.809 INFO  Initiating shutdown.
+2020-11-02 13:56:46.829 INFO  Shutdown complete.
+2020-11-02 13:56:47.775 INFO  Logging to 'C:\Proyectos\Schneider_Test\SchneiderTest\SBack\App_Data\' with level Info
+2020-11-02 13:56:47.854 INFO  Auditing processed messages to 'audit'
+2020-11-02 13:56:47.870 INFO  No valid license could be found. Falling back to trial license with start date '2020-11-01'.
+2020-11-02 13:58:06.520 INFO  Initiating shutdown.
+2020-11-02 13:58:06.587 INFO  Shutdown complete.
+2020-11-02 13:58:07.839 INFO  Logging to 'C:\Proyectos\Schneider_Test\SchneiderTest\SBack\App_Data\' with level Info
+2020-11-02 13:58:07.928 INFO  Auditing processed messages to 'audit'
+2020-11-02 13:58:07.947 INFO  No valid license could be found. Falling back to trial license with start date '2020-11-01'.
+2020-11-02 13:58:25.357 INFO  Initiating shutdown.
+2020-11-02 13:58:25.442 INFO  Shutdown complete.
+2020-11-02 13:58:26.660 INFO  Logging to 'C:\Proyectos\Schneider_Test\SchneiderTest\SBack\App_Data\' with level Info
+2020-11-02 13:58:26.748 INFO  Auditing processed messages to 'audit'
+2020-11-02 13:58:26.764 INFO  No valid license could be found. Falling back to trial license with start date '2020-11-01'.

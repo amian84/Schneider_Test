@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabWM = new System.Windows.Forms.TabPage();
+            this.btnDeleteWM = new System.Windows.Forms.Button();
             this.btnCreateWM = new System.Windows.Forms.Button();
             this.dataGVWM = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,6 +40,7 @@
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnRefreshWM = new System.Windows.Forms.Button();
             this.tabEM = new System.Windows.Forms.TabPage();
+            this.btnDeleteEM = new System.Windows.Forms.Button();
             this.btnCreateEM = new System.Windows.Forms.Button();
             this.dataGVEM = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +49,7 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnRefreshEM = new System.Windows.Forms.Button();
             this.tabGW = new System.Windows.Forms.TabPage();
+            this.btnDeleteGW = new System.Windows.Forms.Button();
             this.btnCreateGW = new System.Windows.Forms.Button();
             this.dataGVGW = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,9 +60,6 @@
             this.port = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btRefreshGW = new System.Windows.Forms.Button();
             this.getAllGatewaysResponseBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btnDeleteGW = new System.Windows.Forms.Button();
-            this.btnDeleteEM = new System.Windows.Forms.Button();
-            this.btnDeleteWM = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabWM.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGVWM)).BeginInit();
@@ -95,6 +95,16 @@
             this.tabWM.TabIndex = 0;
             this.tabWM.Text = "Water Meter";
             this.tabWM.UseVisualStyleBackColor = true;
+            // 
+            // btnDeleteWM
+            // 
+            this.btnDeleteWM.Location = new System.Drawing.Point(866, 180);
+            this.btnDeleteWM.Name = "btnDeleteWM";
+            this.btnDeleteWM.Size = new System.Drawing.Size(156, 35);
+            this.btnDeleteWM.TabIndex = 11;
+            this.btnDeleteWM.Text = "Delete Water Meter";
+            this.btnDeleteWM.UseVisualStyleBackColor = true;
+            this.btnDeleteWM.Click += new System.EventHandler(this.btnDeleteWM_Click);
             // 
             // btnCreateWM
             // 
@@ -171,6 +181,16 @@
             this.tabEM.Text = "Electricity Meter";
             this.tabEM.UseVisualStyleBackColor = true;
             // 
+            // btnDeleteEM
+            // 
+            this.btnDeleteEM.Location = new System.Drawing.Point(855, 197);
+            this.btnDeleteEM.Name = "btnDeleteEM";
+            this.btnDeleteEM.Size = new System.Drawing.Size(185, 35);
+            this.btnDeleteEM.TabIndex = 10;
+            this.btnDeleteEM.Text = "Delete Electricity Meter";
+            this.btnDeleteEM.UseVisualStyleBackColor = true;
+            this.btnDeleteEM.Click += new System.EventHandler(this.btnDeleteEM_Click);
+            // 
             // btnCreateEM
             // 
             this.btnCreateEM.Location = new System.Drawing.Point(855, 118);
@@ -244,6 +264,16 @@
             this.tabGW.TabIndex = 2;
             this.tabGW.Text = "Gateway";
             this.tabGW.UseVisualStyleBackColor = true;
+            // 
+            // btnDeleteGW
+            // 
+            this.btnDeleteGW.Location = new System.Drawing.Point(842, 188);
+            this.btnDeleteGW.Name = "btnDeleteGW";
+            this.btnDeleteGW.Size = new System.Drawing.Size(140, 35);
+            this.btnDeleteGW.TabIndex = 9;
+            this.btnDeleteGW.Text = "Delete Gateway";
+            this.btnDeleteGW.UseVisualStyleBackColor = true;
+            this.btnDeleteGW.Click += new System.EventHandler(this.btnDeleteGW_Click);
             // 
             // btnCreateGW
             // 
@@ -324,36 +354,6 @@
             // 
             this.getAllGatewaysResponseBindingSource.DataSource = typeof(SFrontForm.SBack.GetAllGatewaysResponse);
             // 
-            // btnDeleteGW
-            // 
-            this.btnDeleteGW.Location = new System.Drawing.Point(842, 188);
-            this.btnDeleteGW.Name = "btnDeleteGW";
-            this.btnDeleteGW.Size = new System.Drawing.Size(140, 35);
-            this.btnDeleteGW.TabIndex = 9;
-            this.btnDeleteGW.Text = "Delete Gateway";
-            this.btnDeleteGW.UseVisualStyleBackColor = true;
-            this.btnDeleteGW.Click += new System.EventHandler(this.btnDeleteGW_Click);
-            // 
-            // btnDeleteEM
-            // 
-            this.btnDeleteEM.Location = new System.Drawing.Point(855, 197);
-            this.btnDeleteEM.Name = "btnDeleteEM";
-            this.btnDeleteEM.Size = new System.Drawing.Size(185, 35);
-            this.btnDeleteEM.TabIndex = 10;
-            this.btnDeleteEM.Text = "Delete Electricity Meter";
-            this.btnDeleteEM.UseVisualStyleBackColor = true;
-            this.btnDeleteEM.Click += new System.EventHandler(this.btnDeleteEM_Click);
-            // 
-            // btnDeleteWM
-            // 
-            this.btnDeleteWM.Location = new System.Drawing.Point(866, 180);
-            this.btnDeleteWM.Name = "btnDeleteWM";
-            this.btnDeleteWM.Size = new System.Drawing.Size(156, 35);
-            this.btnDeleteWM.TabIndex = 11;
-            this.btnDeleteWM.Text = "Delete Water Meter";
-            this.btnDeleteWM.UseVisualStyleBackColor = true;
-            this.btnDeleteWM.Click += new System.EventHandler(this.btnDeleteWM_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -362,6 +362,7 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "SchneiderFront";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.tabControl1.ResumeLayout(false);
             this.tabWM.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGVWM)).EndInit();

@@ -40,6 +40,7 @@
             this.lbPort = new System.Windows.Forms.Label();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.chNService = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // txtSN
@@ -126,7 +127,7 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(289, 236);
+            this.btnOk.Location = new System.Drawing.Point(289, 282);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(80, 33);
             this.btnOk.TabIndex = 10;
@@ -136,7 +137,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(184, 236);
+            this.btnCancel.Location = new System.Drawing.Point(184, 282);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(81, 33);
             this.btnCancel.TabIndex = 11;
@@ -144,11 +145,23 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // chNService
+            // 
+            this.chNService.AutoSize = true;
+            this.chNService.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chNService.Location = new System.Drawing.Point(12, 234);
+            this.chNService.Name = "chNService";
+            this.chNService.Size = new System.Drawing.Size(162, 21);
+            this.chNService.TabIndex = 12;
+            this.chNService.Text = "Send via NbusSerice";
+            this.chNService.UseVisualStyleBackColor = true;
+            // 
             // CreateEntity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 297);
+            this.ClientSize = new System.Drawing.Size(400, 339);
+            this.Controls.Add(this.chNService);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.lbPort);
@@ -186,5 +199,6 @@
         private System.Windows.Forms.Label lbPort;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.CheckBox chNService;
     }
 }

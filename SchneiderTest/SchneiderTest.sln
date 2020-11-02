@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFrontForm", "SFrontForm\SF
 		{F4B28C76-6221-4C8B-9946-3AD275B86181} = {F4B28C76-6221-4C8B-9946-3AD275B86181}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messages", "Message\Messages.csproj", "{313C3822-F778-440A-B3DD-9376E947AB6E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{F4E682EA-8723-428C-B5E1-A04C76EA4399}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4E682EA-8723-428C-B5E1-A04C76EA4399}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4E682EA-8723-428C-B5E1-A04C76EA4399}.Release|Any CPU.Build.0 = Release|Any CPU
+		{313C3822-F778-440A-B3DD-9376E947AB6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{313C3822-F778-440A-B3DD-9376E947AB6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{313C3822-F778-440A-B3DD-9376E947AB6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{313C3822-F778-440A-B3DD-9376E947AB6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
