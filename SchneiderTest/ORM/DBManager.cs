@@ -402,5 +402,68 @@ namespace ORM
             }
             return response;
         }
+
+        public SoapListGateway GetAllGWEntitiesForTest(IDataModel db, string serial = null)
+        {
+            SoapListGateway response = new SoapListGateway();
+            response.Code = 200;
+            response.Entities = new List<Gateway>();
+            try
+            {
+                using (db)
+                {
+                    if (string.IsNullOrEmpty(serial))
+                    {
+                        response.Entities = db.GetGateways().ToList();
+                    }
+                    else
+                    {
+                        response.Entities.Add(db.GetGateways()
+                                              .Where(gw => gw.SerialNumber == serial)
+                                              .FirstOrDefault());
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                response.Code = 599;
+                response.Msg = ex.Message;
+            }
+            return response;
+        }
+
+        public void CreateGatewayForTest(
+            IDataModel db,
+            string serial,
+            string brand,
+            string model,
+            string ip,
+            int? port,
+            SOAPResponse response
+        )
+        {
+
+            Gateway result = db.GetGateways()
+                        .Where(gw => gw.SerialNumber == serial)
+                        .FirstOrDefault();
+            if (result == null)
+            {
+                result = new Gateway();
+                result.SerialNumber = serial;
+                result.Brand = brand;
+                result.Model = model;
+                result.Ip = ip;
+                result.Port = port;
+                if (port == null)
+                {
+                    result.Port = 80;
+                }
+                db.AddGateway(result);
+                response.Code = 200;
+                response.Msg = "Ok";
+            }
+        }
     }
 }

@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="DBManager.cs" />
     <Compile Include="DataModel.cs" />
+    <Compile Include="IDataModel.cs" />
     <Compile Include="Model\ElectricityMeter.cs" />
     <Compile Include="Model\Entity.cs" />
     <Compile Include="Model\Gateway.cs" />
